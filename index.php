@@ -10,27 +10,7 @@
             Añada un contacto <span>Todos los campos son obligatorios</span>
         </legend>
 
-        <div class="campos">
-            <div class="campo">
-                <label for="nombre">Nombre:</label>
-                <input type="text" name="nombre" id="nombre" placeholder="Nombre del contacto">
-            </div>
-
-            <div class="campo">
-                <label for="empresa">Empresa:</label>
-                <input type="text" name="empresa" id="empresa" placeholder="Nombre de la empresa">
-            </div>
-
-            <div class="campo">
-                <label for="telefono">Telefono:</label>
-                <input type="tel" name="telefono" id="telefono" placeholder="Teléfono del contacto">
-            </div>
-        </div>
-        <!-- .campos -->
-
-        <div class="campo enviar">
-            <input type="submit" value="Añadir">
-        </div>
+        <?php include 'inc/layout/formulario.php'; ?>
     </form>
 </div>
 
@@ -61,7 +41,7 @@
                         <td>Telemercado</td>
                         <td>153584417</td>
                         <td>
-                            <a href="#" class="btn btn-editar">
+                            <a href="editar.php?id=1" class="btn btn-editar">
                                 <i class="fas fa-edit"></i>
                             </a>
 
@@ -76,7 +56,7 @@
                         <td>Telemercado</td>
                         <td>153584417</td>
                         <td>
-                            <a href="#" class="btn btn-editar">
+                            <a href="editar.php?id=1" class="btn btn-editar">
                                 <i class="fas fa-edit"></i>
                             </a>
 
@@ -91,7 +71,7 @@
                         <td>Telemercado</td>
                         <td>153584417</td>
                         <td>
-                            <a href="#" class="btn btn-editar">
+                            <a href="editar.php?id=1" class="btn btn-editar">
                                 <i class="fas fa-edit"></i>
                             </a>
 
