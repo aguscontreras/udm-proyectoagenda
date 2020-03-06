@@ -23,19 +23,48 @@ function leerFormulario(e) {
         // Pasa la validacion, crear llamada a Ajax
         const INFOCONTACTO = new FormData();
         INFOCONTACTO.append('nombre', NOMBRE);
-        INFOCONTACTO.append('nombre', EMPRESA);
-        INFOCONTACTO.append('nombre', TELEFONO);
-        INFOCONTACTO.append('nombre', ACCION);
+        INFOCONTACTO.append('empresa', EMPRESA);
+        INFOCONTACTO.append('telefono', TELEFONO);
+        INFOCONTACTO.append('accion', ACCION);
 
-        console.log(INFOCONTACTO);
+        // console.log(...INFOCONTACTO);
 
         if (ACCION === 'crear') {
-            // Tenemos un nuevo elementp
+            // Tenemos un nuevo contacto
+            insertarBD(INFOCONTACTO);
         } else {
             // Editar el contacto
         }
         mostrarNotificacion('Contacto creado exitosamente', 'exito');
     }
+}
+
+/** Inserta en la BBDD via AJAX **/
+
+function insertarBD (datos) {
+    // Llamado a Ajax
+
+    // Crear el objeto
+    const XHR = new XMLHttpRequest();
+
+    // Abrir la conexion
+    XHR.open('POST', 'inc/modelos/modelo-contactos.php', true);
+
+    // Pasar los datos
+    XHR.onload = function () {
+        if (this.status === 200) {
+            // console.log(JSON.parse(XHR.responseText));
+            const RESPUESTA = JSON.parse(XHR.responseText);
+
+            // console.log(RESPUESTA.empresa);
+            
+        }
+    }
+
+    // Enviar los datos
+    XHR.send(datos);
+
+    // Leer errores: opcional
 }
 
 // Notificacion en pantalla
