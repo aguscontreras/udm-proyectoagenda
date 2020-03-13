@@ -1,4 +1,5 @@
 const FORMULARIOCONTACTOS = document.querySelector('#contacto');
+const LISTADOCONTACTOS = document.querySelector('#listado-contactos tbody')
 
 eventListeners();
 
@@ -56,7 +57,49 @@ function insertarBD(datos) {
             // console.log(JSON.parse(XHR.responseText));
             const RESPUESTA = JSON.parse(XHR.responseText);
 
-            console.log(RESPUESTA);
+            // inserta un nuevo elemento a la tabla
+            const NUEVO_CONTACTO = document.createElement('tr');
+
+            NUEVO_CONTACTO.innerHTML = `
+                <td>${RESPUESTA.datos.nombre}</td>
+                <td>${RESPUESTA.datos.empresa}</td>
+                <td>${RESPUESTA.datos.telefono}</td>
+            `;
+
+            // crear contenedor para botones
+            const CONTENEDOR_ACCIONES = document.createElement('td');
+
+            // crear el icono de editar
+            const ICONO_EDITAR = document.createElement('i');
+            ICONO_EDITAR.classList.add('fas', 'fa-edit');
+
+            // crea el enlace para editar
+            const BTN_EDITAR = document.createElement('a');
+            BTN_EDITAR.appendChild(ICONO_EDITAR);
+            BTN_EDITAR.href = `editar.php?id=${RESPUESTA.datos.id_insertado}`;
+            BTN_EDITAR.classList.add('btn', 'btn-editar');
+
+            // agregarlo al padre
+            CONTENEDOR_ACCIONES.appendChild(BTN_EDITAR);
+
+            // crear el icono de eliminar
+            const ICONO_ELIMINAR = document.createElement('i');
+            ICONO_ELIMINAR.classList.add('fas', 'fa-trash-alt');
+
+            // crea el boton de eliminar
+            const BTN_ELIMINAR = document.createElement('button');
+            BTN_ELIMINAR.appendChild(ICONO_ELIMINAR);
+            BTN_ELIMINAR.setAttribute('data-id', RESPUESTA.datos.id_insertado);
+            BTN_ELIMINAR.classList.add('btn', 'btn-borrar');
+
+            // agregarlo al padre
+            CONTENEDOR_ACCIONES.appendChild(BTN_ELIMINAR);
+
+            // agregarlo al tr
+            NUEVO_CONTACTO.appendChild(CONTENEDOR_ACCIONES);
+
+            // agregarlo con los contactos
+            LISTADOCONTACTOS.appendChild(NUEVO_CONTACTO);
         }
     }
 
