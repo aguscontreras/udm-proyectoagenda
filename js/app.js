@@ -41,7 +41,7 @@ function leerFormulario(e) {
 
 /** Inserta en la BBDD via AJAX **/
 
-function insertarBD (datos) {
+function insertarBD(datos) {
     // Llamado a Ajax
 
     // Crear el objeto
@@ -51,13 +51,12 @@ function insertarBD (datos) {
     XHR.open('POST', 'inc/modelos/modelo-contactos.php', true);
 
     // Pasar los datos
-    XHR.onload = function () {
+    XHR.onload = function() {
         if (this.status === 200) {
             // console.log(JSON.parse(XHR.responseText));
             const RESPUESTA = JSON.parse(XHR.responseText);
 
-            // console.log(RESPUESTA.empresa);
-            
+            console.log(RESPUESTA);
         }
     }
 
